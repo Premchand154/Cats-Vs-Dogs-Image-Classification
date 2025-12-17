@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cats vs Dogs AI</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="app-container">
+        <h1>🐶 Cats vs Dogs AI Classifier</h1>
+        <p class="subtitle">
+            Upload an image and let our AI model predict whether it is a cat or a dog.
+        </p>
+
+        <div class="upload-card">
+            <input type="file" id="imageInput" accept="image/*" />
+            <button onclick="predict()">Predict</button>
+
+            <div id="preview-container">
+                <img id="preview" />
+            </div>
+
+            <p id="result"></p>
+        </div>
+
+        <footer>
+            <p>Powered by TensorFlow & FastAPI</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

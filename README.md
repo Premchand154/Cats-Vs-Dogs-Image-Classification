@@ -1,77 +1,92 @@
-# Cats vs Dogs Image Classification using CNN & FastAPI
+# Cats vs Dogs Image Classification
 
-This project implements a **Convolutional Neural Network (CNN)** to classify images as **Cat** or **Dog** and deploys the trained model as a **REST API using FastAPI**.
+# CNN + FastAPI + Web UI
 
-The API accepts image uploads and returns the **predicted class along with a confidence score**, demonstrating an end-to-end deep learning deployment workflow.
+This project implements an **end-to-end deep learning image classification system** that distinguishes between **cats and dogs** using a **Convolutional Neural Network (CNN)** and exposes predictions through a **FastAPI REST API** with a **simple web-based frontend**.
+
+Users can upload an image and instantly receive the **predicted class along with a confidence score**, demonstrating a complete **ML → API → Frontend deployment workflow**.
 
 ---
 
 # Project Overview
 
-Image classification is a fundamental computer vision task.  
-This project focuses on building a **binary image classifier** using deep learning and making it accessible via a backend API.
+Image classification is a core computer vision problem.
+This project demonstrates how to:
 
-Key highlights:
-- CNN model trained on Cats vs Dogs dataset
-- Image preprocessing and normalization
-- Model deployment using FastAPI
-- Real-time predictions through REST API
+* Train a **binary image classifier** using deep learning
+* Serve the trained model via **FastAPI**
+* Consume the API using a **lightweight HTML/CSS/JavaScript frontend**
+* Deliver real-time predictions through a clean UI
 
 ---
 
 # Model Details
 
-- **Architecture:** CNN (MobileNetV2-based)
-- **Input Size:** 150 × 150 × 3
-- **Output:** Binary classification (Cat / Dog)
-- **Activation:** Sigmoid
-- **Loss Function:** Binary Cross-Entropy
+* **Architecture:** MobileNetV2-based CNN
+* **Input Size:** `150 × 150 × 3`
+* **Output:** Binary classification (Cat / Dog)
+* **Activation Function:** Sigmoid
+* **Loss Function:** Binary Cross-Entropy
+* **Framework:** TensorFlow / Keras
 
 ---
 
 # Features
 
-- FastAPI-based REST API
-- Image upload support
-- Confidence-based predictions
-- Production-style model loading
-- Swagger UI for testing
+* CNN-based image classification
+* FastAPI REST API for inference
+* Image upload support
+* Confidence-based predictions
+* Production-style model loading
+* Interactive **Swagger UI**
+* Simple **web frontend** for real-time testing
 
 ---
 
 # Project Structure
 
 ```
-
 Cats-Vs-Dogs-CNN-FastAPI/
 │
-├── app.py                         # FastAPI application
-├── requirements.txt               # Dependencies
-├── Cats_Vs_Dogs_CNN.ipynb          # Model training notebook
+├── app.py                          # FastAPI backend
+├── requirements.txt                # Python dependencies
+├── Cats_Vs_Dogs_CNN.ipynb           # Model training notebook
+│
 ├── models/
-│   └── cats_vs_dogs_mobilenetv2.h5 # Trained CNN model
+│   └── cats_vs_dogs_mobilenetv2.h5  # Trained CNN model
+│
+├── frontend/
+│   ├── index.html                  # Web UI
+│   ├── style.css                   # Styling
+│   └── script.js                   # API integration
+│
 └── README.md
-
-````
+```
 
 ---
 
 # Installation & Setup
 
-# Clone the repository
+# Clone the Repository
+
 ```bash
 git clone https://github.com/YOUR_USERNAME/Cats-Vs-Dogs-Image-Classification.git
 cd Cats-Vs-Dogs-Image-Classification
-````
+```
 
-# Create and activate virtual environment
+---
+
+# Create & Activate Virtual Environment
 
 ```bash
 python -m venv .venv
-.venv\Scripts\activate    # Windows
+.venv\Scripts\activate     # Windows
+# source .venv/bin/activate  # Linux / Mac
 ```
 
-# Install dependencies
+---
+
+# Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -79,13 +94,15 @@ pip install -r requirements.txt
 
 ---
 
-# Run the Application
+# Running the Application
+
+# Start the FastAPI Server
 
 ```bash
 uvicorn app:app --reload
 ```
 
-Server will start at:
+The API will be available at:
 
 ```
 http://127.0.0.1:8000
@@ -93,57 +110,72 @@ http://127.0.0.1:8000
 
 ---
 
-# API Usage
+#  Using the Web Interface
 
-# Swagger UI
+1. Open `frontend/index.html` in your browser
+2. Upload a **cat or dog image**
+3. Click **Predict**
+4. View the prediction and confidence score
 
-Open:
+The frontend communicates directly with the FastAPI backend.
+
+---
+
+# API Documentation (Swagger UI)
+
+FastAPI provides built-in API documentation:
 
 ```
 http://127.0.0.1:8000/docs
 ```
 
-# Sample Prediction
+You can test image uploads directly from the browser.
 
-Upload an image (cat or dog).
+---
 
-# Sample Response
+# Sample API Response
 
 ```json
 {
   "prediction": "Dog",
-  "confidence": 0.94
+  "confidence": 94.0
 }
 ```
 
 ---
 
-# Model Limitation
+# Model Limitations
 
-* The model is a **single-label classifier**
+* This is a **single-label classifier**
 * If an image contains **both a cat and a dog**, the model predicts the **dominant object**
-* Handling multiple objects would require **object detection models (YOLO, SSD, etc.)**
+* Multiple-object handling would require **object detection models** such as:
+
+  * YOLO
+  * SSD
+  * Faster R-CNN
 
 ---
 
 # Technologies Used
 
-* Python
-* TensorFlow / Keras
-* FastAPI
-* NumPy
-* Pillow
-* Uvicorn
+* **Python**
+* **TensorFlow / Keras**
+* **FastAPI**
+* **NumPy**
+* **Pillow**
+* **Uvicorn**
+* **HTML / CSS / JavaScript**
 
 ---
 
 # Future Improvements
 
 * Object detection for multi-animal images
-* Cloud deployment (Render / AWS)
-* Streamlit frontend
+* Cloud deployment (AWS / Render / Railway)
+* Dockerization
+* Streamlit or React frontend
 * Batch image prediction
+* Model versioning and monitoring
 
 ---
-
 
